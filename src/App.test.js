@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import avatar from './avatar.jpg'; // Import your avatar image
 import './App.css';
