@@ -10,7 +10,7 @@ function SignUp() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  const backendUrl = 'http://localhost:3001';
+  const backendUrl = 'ec2-184-73-28-211.compute-1.amazonaws.com:3001';
   
   async function handleSignUp(event) {
     event.preventDefault();
