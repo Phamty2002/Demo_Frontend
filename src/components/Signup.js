@@ -10,13 +10,12 @@ function SignUp() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  const backendUrl = 'ec2-184-73-28-211.compute-1.amazonaws.com:3001';
   
   async function handleSignUp(event) {
     event.preventDefault();
 
     try {
-      const response = await fetch(`${backendUrl}/api/signup/signup`, {
+      const response = await fetch('http://ec2-184-73-28-211.compute-1.amazonaws.com:3001/api/signup/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
