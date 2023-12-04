@@ -2,30 +2,29 @@ import React, { useState } from 'react';
 import './Signup.css'
 
 function SignUp() {
-  const [username, setUsername] = useState('');
+  const [user, setUser] = useState(''); // Change 'users' to 'user'
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [phone_number, setPhone] = useState(''); // Add phone state
+  const [phone_number, setPhone] = useState('');
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  
   async function handleSignUp(event) {
     event.preventDefault();
-  
+
     try {
       const response = await fetch('http://ec2-184-73-28-211.compute-1.amazonaws.com:3001/api/signup/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password, email, phone_number }), // Include phone_number in the request body
+        body: JSON.stringify({ username: user, password, email, phone_number }),
       });
-  
+
       if (response.ok) {
         const successData = await response.json();
-        setSuccessMessage(successData.message); // Set the success message
+        setSuccessMessage(successData.message);
         setIsModalOpen(true);
       } else {
         const errorData = await response.json();
@@ -48,7 +47,7 @@ function SignUp() {
       <form className="signup-form" onSubmit={handleSignUp}>
         <h2>Sign Up</h2>
         {error && <div className="error">{error}</div>}
-        {successMessage && <div className="success">{successMessage}</div>} {/* Display success message */}
+        {successMessage && <div className="success">{successMessage}</div>}
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -56,8 +55,8 @@ function SignUp() {
             id="username"
             name="username"
             required
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -82,7 +81,6 @@ function SignUp() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        {/* Add a phone_number input field */}
         <div className="form-group">
           <label htmlFor="phone_number">Phone Number</label>
           <input
@@ -100,7 +98,6 @@ function SignUp() {
         </p>
       </form>
 
-      {/* Modal */}
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
