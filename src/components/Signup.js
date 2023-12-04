@@ -15,7 +15,7 @@ function SignUp() {
     event.preventDefault();
   
     try {
-      const response = await fetch('http://ec2-184-73-28-211.compute-1.amazonaws.com:3001/api/signup/signup', {
+      const response = await fetch('localhost:3001/api/signup/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
