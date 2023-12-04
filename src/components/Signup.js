@@ -13,16 +13,16 @@ function SignUp() {
   
   async function handleSignUp(event) {
     event.preventDefault();
-
+  
     try {
-      const response = await fetch('ec2-184-73-28-211.compute-1.amazonaws.com:3001/api/signup/signup', {
+      const response = await fetch('http://ec2-184-73-28-211.compute-1.amazonaws.com:3001/api/signup/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password, email, phone_number }), // Include phone_number in the request body
       });
-
+  
       if (response.ok) {
         const successData = await response.json();
         setSuccessMessage(successData.message); // Set the success message
