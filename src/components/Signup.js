@@ -10,8 +10,8 @@ function SignUp() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
+  const backendUrl = 'http://localhost:3001';
+  
   async function handleSignUp(event) {
     event.preventDefault();
 
